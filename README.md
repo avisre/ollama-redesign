@@ -3,71 +3,75 @@
 A complete redesign of ollama.com plus two real product features that don't
 exist today. Built as a portfolio piece for an Ollama application.
 
-**Open `index.html` in a browser, or run `python3 -m http.server` in this
-folder. No build step.**
+> **Live:** https://avisre.github.io/ollama-redesign/
+
+![Homepage](screenshots/01-home.png)
 
 ---
 
-## Why this exists
+## The two new features
 
-I'm an Ollama Pro user who hit two friction points:
+### Cloud Capacity dashboard
 
-1. **The Usage page is a snapshot, not a dashboard** — you have to refresh
-   the tab to know if anything changed mid-session.
-2. **There's no signal of which cloud model is fast right now** — when one
-   model is slow, you have no way to know if another would serve faster.
+Ollama doesn't have anything like this today. When you're picking a cloud model
+and one is slow, there's no way to know if another is faster. This page shows
+live load, latency, and queue depth for every cloud model — filter by status,
+sort by latency, pick the one that's serving fast right now.
 
-So I rebuilt the site I'd want to use, end to end.
+![Cloud Capacity dashboard](screenshots/04-capacity.png)
+
+### Live Usage page
+
+The current ollama.com/settings is a snapshot — refresh the tab to see new
+state. This version auto-refreshes every 15s with a visible countdown, pauses
+when the tab is hidden, and shows a 60-min sparkline + trend delta + per-model
+token breakdown.
+
+![Live Usage dashboard](screenshots/05-usage.png)
 
 ---
 
-## Pages
+## The site
 
 | Page | What's here |
 |------|-------------|
-| `index.html`     | Homepage — hero, install command, featured models, why-Ollama, CTA |
+| `index.html`     | Hero, install command, featured models, why-Ollama, CTA |
 | `library.html`   | Browse all models — search + filter (Local / Cloud / Code / Vision) |
-| `model.html`     | Per-model detail — readme, tags table, API examples, **live capacity widget** |
-| `settings.html`  | Account — **live Usage dashboard** + **Cloud Capacity dashboard** (new) |
-| `pricing.html`   | Three-tier pricing — Local / Pro / Team |
-| `docs.html`      | Quickstart guide — install, run, API, cloud |
-| `404.html`       | "This llama wandered off" |
+| `model.html`     | Per-model detail — readme, tags, API examples, **live capacity widget in the sidebar** |
+| `settings.html`  | Account — Usage + Capacity dashboards (above) |
+| `pricing.html`   | Local / Pro / Team |
+| `docs.html`      | Quickstart |
+| `404.html`       | Wandering llama |
 
----
+### Library page
 
-## Two new product features
+![Models library](screenshots/02-library.png)
 
-### 1. Live Usage page
+### Model detail page
 
-What ollama.com/settings has today is a static read — refresh the tab to
-see new state. This version:
+The capacity widget in the sidebar updates live so you can see how busy a
+model is before you pull it.
 
-- Auto-refreshes every 15s with a visible countdown
-- Pause/resume toggle, "Refresh now" button, `R` keyboard shortcut
-- Pauses when the tab is hidden, catches up on focus (no wasted requests)
-- 60-min sparkline of session usage with a "▲ 2.3% in 5m" trend delta
-- Top-models breakdown (token consumption per model — currently invisible
-  to users, most-requested feature in the Discord)
+![Model detail page](screenshots/03-model.png)
 
-### 2. Cloud Capacity dashboard
+### Mobile
 
-Brand new — Ollama doesn't have this anywhere today.
+Real responsive design, not just media queries. Topbar collapses, settings
+sidebar becomes a horizontal scroller, model grid reflows, status banner
+stacks vertically.
 
-- A status card per cloud model — Available / Busy / At capacity
-- Live load %, latency, queue depth, region for each
-- Per-model sparkline so you can spot "spiking now" vs "consistently hot"
-- Filter by status, sort by lowest load / latency / size / name
-- System banner with overall health and average latency
-- Status-change flash animation when a card flips state
-
-The same widget is embedded on each `model.html` page so you can check
-capacity without leaving the model card.
+<table>
+<tr>
+<td><img src="screenshots/06-home-mobile.png" alt="Homepage on mobile" width="320"/></td>
+<td><img src="screenshots/07-capacity-mobile.png" alt="Capacity on mobile" width="320"/></td>
+</tr>
+</table>
 
 ---
 
 ## Site-wide craft
 
-This is what a frontend-designer founder would notice first:
+What a frontend-designer founder will notice first:
 
 - **Native Ollama llama mark** as an inline SVG symbol — used in topbar,
   hero (with a soft float animation), footer, and 404. Single source of
@@ -76,7 +80,7 @@ This is what a frontend-designer founder would notice first:
   motion curves, typography ramp. One change to `--text` rebrands the
   whole site. Apple-style `--ease: cubic-bezier(0.2, 0.8, 0.2, 1)`.
 - **Cmd+K command palette** — searches models, settings, docs. ↑↓ to
-  navigate, `↵` to open, `esc` to close. Also hit `/` from anywhere.
+  navigate, `↵` to open, `esc` to close. Hit `/` from anywhere.
 - **Copy-to-clipboard** for every code block, with a checkmark animation
   and a fallback for non-secure contexts.
 - **Theme toggle** with localStorage persistence; respects
@@ -85,14 +89,12 @@ This is what a frontend-designer founder would notice first:
 - **Accessibility** — skip link, focus rings, ARIA labels and roles, live
   regions, `aria-current="page"` on active nav, `prefers-reduced-motion`,
   semantic landmarks.
-- **Responsive** down to mobile — sidebar collapses to horizontal scroll,
-  topbar drops nav, model grids reflow.
 - **Native font stack** — `-apple-system, BlinkMacSystemFont, Inter, …` —
   no FOIT, no external font load.
 - **Backdrop-filter blur** on the topbar, real macOS-style.
 - **Hash routing** in settings — `settings.html#capacity` deep-links work.
 - **No build step.** Pure HTML/CSS/JS so any reviewer opens a file and it
-  runs. Total: ~1200 lines of CSS, ~600 lines of JS, ~600 lines of HTML.
+  runs. ~1200 lines of CSS, ~600 lines of JS, ~600 lines of HTML.
 
 ---
 
@@ -111,22 +113,36 @@ This is what a frontend-designer founder would notice first:
   endpoint is a single function change in `refreshUsage` / `tickCapacity`.
 - Sparklines are inline SVG with `vector-effect: non-scaling-stroke` for
   crisp lines at any container size.
+- Auto-refresh engine is tab-visibility aware — pauses on hidden, catches
+  up on focus, never wastes requests.
 
 ---
 
 ## Files
 
 ```
-index.html      homepage
-library.html    browse models
-model.html      single model detail
-settings.html   usage + capacity dashboards
-pricing.html    pricing tiers
-docs.html       quickstart docs
-404.html        not found
-logo.svg        the llama mark (referenced by all pages)
-styles.css      design system + components
-app.js          shared shell + per-page logic
+index.html       homepage
+library.html     browse models
+model.html       single model detail
+settings.html    usage + capacity dashboards
+pricing.html     pricing tiers
+docs.html        quickstart docs
+404.html         not found
+logo.svg         the llama mark (referenced by all pages)
+styles.css       design system + components
+app.js           shared shell + per-page logic
+screenshots/     screenshots used in this README
 ```
+
+## Run locally
+
+```bash
+python3 -m http.server 7777
+open http://localhost:7777/
+```
+
+No build step, no dependencies, no install.
+
+---
 
 — Avinash · `avinashsreekumar007@gmail.com`
