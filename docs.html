@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Docs · Ollama</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>(() => { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; })();</script>
+</head>
+<body data-page="docs">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div data-shell="topbar"></div>
+
+  <main id="main">
+    <section class="section">
+      <div class="container section-narrow">
+        <div class="section-head">
+          <span class="eyebrow">Documentation</span>
+          <h2>Get started in 60 seconds.</h2>
+          <p class="lead">Pick a path. Each one finishes with a working model on your machine.</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px; margin-bottom:48px;">
+          <a class="model-card" href="#install"><div class="model-name-wrap"><h3 class="model-name">Install</h3><p class="model-tagline">Get the CLI on macOS, Linux, or Windows.</p></div></a>
+          <a class="model-card" href="#run"><div class="model-name-wrap"><h3 class="model-name">Run a model</h3><p class="model-tagline">Pull, run, chat. The basics.</p></div></a>
+          <a class="model-card" href="#api"><div class="model-name-wrap"><h3 class="model-name">API reference</h3><p class="model-tagline">Drop-in OpenAI compatibility.</p></div></a>
+          <a class="model-card" href="#cloud"><div class="model-name-wrap"><h3 class="model-name">Cloud</h3><p class="model-tagline">Run models too big for your laptop.</p></div></a>
+        </div>
+
+        <article style="display:flex; flex-direction:column; gap:20px;">
+          <h3 id="install" style="font-size:22px;">Install</h3>
+          <div class="code" data-copy="curl -fsSL https://ollama.com/install.sh | sh">
+            <span class="code-text">curl -fsSL https://ollama.com/install.sh | sh</span>
+            <button class="code-copy" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+          </div>
+
+          <h3 id="run" style="font-size:22px; margin-top:16px;">Run a model</h3>
+          <p class="muted">Pull a model, then run it interactively.</p>
+          <div class="code" data-copy="ollama pull llama4:scout">
+            <span class="code-text">ollama pull llama4:scout</span>
+            <button class="code-copy" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+          </div>
+          <div class="code" data-copy="ollama run llama4:scout">
+            <span class="code-text">ollama run llama4:scout</span>
+            <button class="code-copy" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+          </div>
+
+          <h3 id="api" style="font-size:22px; margin-top:16px;">API</h3>
+          <p class="muted">Send chat requests to your local server.</p>
+          <pre class="code-block">curl http://localhost:11434/api/chat -d '{
+  "model": "llama4:scout",
+  "messages": [{ "role": "user", "content": "Why is the sky blue?" }]
+}'<button class="code-copy" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></pre>
+
+          <h3 id="cloud" style="font-size:22px; margin-top:16px;">Cloud</h3>
+          <p class="muted">For models that don't fit on your laptop, run on Ollama Cloud — same CLI, same API, just <span class="mono">--cloud</span>.</p>
+          <div class="code" data-copy="ollama run --cloud kimi-k2:1t">
+            <span class="code-text">ollama run --cloud kimi-k2:1t</span>
+            <button class="code-copy" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div data-shell="footer"></div>
+  <div data-shell="palette"></div>
+  <script src="app.js" defer></script>
+</body>
+</html>

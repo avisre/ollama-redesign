@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Models · Ollama</title>
+  <meta name="description" content="Browse all models available on Ollama — from small local models to massive cloud-hosted ones." />
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>(() => { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; })();</script>
+</head>
+<body data-page="library">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div data-shell="topbar"></div>
+
+  <main id="main">
+    <section class="section" style="padding-top:48px;">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Library</span>
+          <h2>Models</h2>
+          <p class="lead">Run any of these locally with <span class="mono">ollama pull</span>, or use them on Ollama Cloud.</p>
+        </div>
+
+        <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; margin-bottom:24px;">
+          <div style="display:flex; gap:8px; align-items:center; flex:1; min-width:240px; max-width:380px;">
+            <div class="search-trigger" style="cursor:text; max-width:none; padding-right:14px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+              </svg>
+              <input id="libSearch" type="search" placeholder="Filter models…" aria-label="Filter models" style="flex:1; border:0; outline:0; background:transparent; color:var(--text); font-size:13px;" />
+            </div>
+          </div>
+          <div class="chips" id="libFilters">
+            <button class="chip active" data-filter="all">All</button>
+            <button class="chip" data-filter="local">Runs locally</button>
+            <button class="chip" data-filter="cloud">Cloud only</button>
+            <button class="chip" data-filter="code">Code</button>
+            <button class="chip" data-filter="vision">Vision</button>
+          </div>
+        </div>
+
+        <div class="model-grid" id="libraryGrid"></div>
+        <p class="muted" id="libEmpty" style="text-align:center; padding:48px; display:none;">No models match your filters.</p>
+      </div>
+    </section>
+  </main>
+
+  <div data-shell="footer"></div>
+  <div data-shell="palette"></div>
+  <script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing · Ollama</title>
+  <meta name="description" content="Free for local. Pay-as-you-go for cloud." />
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>(() => { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; })();</script>
+</head>
+<body data-page="pricing">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div data-shell="topbar"></div>
+
+  <main id="main">
+    <section class="section">
+      <div class="container">
+        <div class="section-head" style="text-align:center; align-items:center;">
+          <span class="eyebrow">Pricing</span>
+          <h2>Free for local. Simple in the cloud.</h2>
+          <p class="lead">Run any model on your own machine for free, forever. Use Ollama Cloud when you need to scale — no commitment.</p>
+        </div>
+
+        <div class="price-grid">
+          <article class="price-card">
+            <div>
+              <div class="price-name">Local</div>
+              <div class="price-amount"><span class="num">$0</span><span class="per">forever</span></div>
+              <p class="price-tagline muted">Use Ollama on your own hardware. No telemetry, no login.</p>
+            </div>
+            <ul class="price-features">
+              <li>All open-weight models</li>
+              <li>Unlimited usage on your hardware</li>
+              <li>OpenAI-compatible API on <span class="mono">localhost:11434</span></li>
+              <li>macOS, Linux, Windows, Docker</li>
+            </ul>
+            <a class="btn btn-secondary" href="index.html#download">Download</a>
+          </article>
+
+          <article class="price-card featured">
+            <div>
+              <div class="price-name">Pro</div>
+              <div class="price-amount"><span class="num">$20</span><span class="per">/ month</span></div>
+              <p class="price-tagline muted">For when you want to run the big ones without owning a GPU rack.</p>
+            </div>
+            <ul class="price-features">
+              <li>All cloud models including 671B and 1T</li>
+              <li>Live capacity dashboard</li>
+              <li>Priority queue during peak load</li>
+              <li>Generous weekly allowance</li>
+              <li>Email support</li>
+            </ul>
+            <a class="btn" href="settings.html">Upgrade</a>
+          </article>
+
+          <article class="price-card">
+            <div>
+              <div class="price-name">Team</div>
+              <div class="price-amount"><span class="num">Custom</span></div>
+              <p class="price-tagline muted">Shared workspaces, audit logs, and SSO for organizations.</p>
+            </div>
+            <ul class="price-features">
+              <li>Everything in Pro, per seat</li>
+              <li>Shared API keys with role-based access</li>
+              <li>SSO (SAML, OIDC)</li>
+              <li>Audit logs and usage exports</li>
+              <li>Dedicated support</li>
+            </ul>
+            <a class="btn btn-secondary" href="#">Contact sales</a>
+          </article>
+        </div>
+
+        <p class="muted" style="text-align:center; margin-top:32px; font-size:13px;">
+          All plans include the open source CLI. Cancel any time.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <div data-shell="footer"></div>
+  <div data-shell="palette"></div>
+  <script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ollama · Get up and running with large language models</title>
+  <meta name="description" content="Run large language models locally. Available for macOS, Linux, and Windows." />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    (() => { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; })();
+  </script>
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div data-shell="topbar"></div>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <svg class="hero-mark" viewBox="0 0 100 100" aria-hidden="true"><use href="logo.svg#root"/></svg>
+        <h1>Get up and running with <span class="accent">large language models.</span></h1>
+        <p class="lead">
+          Run Llama 4, GPT-OSS, DeepSeek, and more — locally, on your machine.
+          Or scale to the cloud when you need to.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-lg" href="#download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+            </svg>
+            Download
+          </a>
+          <a class="btn btn-secondary btn-lg" href="library.html">Browse models</a>
+        </div>
+        <p class="hero-meta">
+          <span>macOS</span><span class="dot"></span>
+          <span>Linux</span><span class="dot"></span>
+          <span>Windows</span><span class="dot"></span>
+          <span>Docker</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- INSTALL / QUICKSTART -->
+    <section class="section" id="download">
+      <div class="container section-narrow">
+        <div class="section-head" style="text-align:center; align-items:center;">
+          <span class="eyebrow">Quickstart</span>
+          <h2>Three commands. You're running.</h2>
+          <p class="lead">Install, pull a model, start chatting — works the same on every platform.</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div class="code" data-copy="curl -fsSL https://ollama.com/install.sh | sh">
+            <span class="code-text">curl -fsSL https://ollama.com/install.sh | sh</span>
+            <button class="code-copy" aria-label="Copy install command">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+          </div>
+          <div class="code" data-copy="ollama pull gpt-oss:120b">
+            <span class="code-text">ollama pull gpt-oss:120b</span>
+            <button class="code-copy" aria-label="Copy pull command">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+          </div>
+          <div class="code" data-copy="ollama run gpt-oss:120b">
+            <span class="code-text">ollama run gpt-oss:120b</span>
+            <button class="code-copy" aria-label="Copy run command">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED MODELS -->
+    <section class="section" style="padding-top:32px;">
+      <div class="container">
+        <div class="section-head" style="display:flex; flex-direction:row; justify-content:space-between; align-items:flex-end; flex-wrap:wrap;">
+          <div>
+            <span class="eyebrow">Library</span>
+            <h2>Featured models</h2>
+          </div>
+          <a class="btn btn-ghost btn-sm" href="library.html">
+            See all
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="model-grid" id="featuredModels"></div>
+      </div>
+    </section>
+
+    <!-- WHY OLLAMA -->
+    <section class="section" style="background:var(--bg-soft);">
+      <div class="container">
+        <div class="section-head" style="text-align:center; align-items:center;">
+          <span class="eyebrow">Why Ollama</span>
+          <h2>Local first. Cloud when you need it.</h2>
+        </div>
+        <div class="feature-grid">
+          <div class="feature">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+            <h3>Runs on your machine</h3>
+            <p>Apple Silicon, NVIDIA, AMD. No data leaves your device — full conversations stay local.</p>
+          </div>
+          <div class="feature">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+            </svg>
+            <h3>Cloud when you need scale</h3>
+            <p>Spill over to Ollama Cloud for models that don't fit on your laptop. Same CLI, same API.</p>
+          </div>
+          <div class="feature">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+            </svg>
+            <h3>Drop-in OpenAI API</h3>
+            <p>Compatible with the OpenAI API surface. Point your client at <span class="mono">localhost:11434</span> and ship.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="padding-top:40px; padding-bottom:96px;">
+      <div class="container section-narrow" style="text-align:center; display:flex; flex-direction:column; gap:20px; align-items:center;">
+        <h2 style="font-size:36px; letter-spacing:-0.02em;">Ready when you are.</h2>
+        <p class="lead" style="max-width:48ch;">Open source, free for personal use. No telemetry. No login required to run locally.</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+          <a class="btn btn-lg" href="#download">Download for free</a>
+          <a class="btn btn-secondary btn-lg" href="docs.html">Read the docs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-shell="footer"></div>
+  <div data-shell="palette"></div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

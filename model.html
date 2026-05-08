@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Model · Ollama</title>
+  <meta name="description" content="Model details and tags." />
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>(() => { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; })();</script>
+</head>
+<body data-page="model">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div data-shell="topbar"></div>
+
+  <main id="main" class="model-detail">
+    <div>
+      <a class="muted" href="library.html" style="font-size:13px; display:inline-flex; gap:4px; align-items:center; margin-bottom:16px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Models
+      </a>
+      <header class="model-detail-head">
+        <h1 id="mdName">gpt-oss:120b</h1>
+        <p class="lead" id="mdTagline">An open-weight 120B parameter model with strong reasoning and tool-use abilities.</p>
+        <div class="tag-row" id="mdTags"></div>
+      </header>
+
+      <div class="code" data-copy="ollama run gpt-oss:120b" id="mdRunCode" style="margin-top:8px;">
+        <span class="code-text" id="mdRunText">ollama run gpt-oss:120b</span>
+        <button class="code-copy" aria-label="Copy command">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+      </div>
+
+      <nav class="model-tabs" role="tablist" aria-label="Model sections">
+        <button class="active" role="tab" data-tab="readme" aria-selected="true">Readme</button>
+        <button role="tab" data-tab="tags" aria-selected="false">Tags</button>
+        <button role="tab" data-tab="api" aria-selected="false">API</button>
+        <button role="tab" data-tab="license" aria-selected="false">License</button>
+      </nav>
+
+      <section data-tab-panel="readme">
+        <div style="display:flex; flex-direction:column; gap:16px; font-size:15px; line-height:1.7;" id="mdReadme">
+          <p>This model is designed for general-purpose reasoning, code generation, and tool use. It runs locally with <span class="mono">ollama run</span>, and is also available on Ollama Cloud for users without the hardware to host it.</p>
+          <h3 style="font-size:18px; margin-top:8px;">Examples</h3>
+          <pre class="code-block">ollama run gpt-oss:120b "Explain quantum entanglement to a high schooler."<button class="code-copy" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></pre>
+          <h3 style="font-size:18px; margin-top:8px;">API</h3>
+          <pre class="code-block">curl http://localhost:11434/api/chat -d '{
+  "model": "gpt-oss:120b",
+  "messages": [{ "role": "user", "content": "Hello" }]
+}'<button class="code-copy" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></pre>
+        </div>
+      </section>
+
+      <section data-tab-panel="tags" hidden>
+        <table class="tag-table">
+          <thead>
+            <tr><th>Tag</th><th>Size</th><th>Quantization</th><th>Updated</th></tr>
+          </thead>
+          <tbody id="mdTagRows"></tbody>
+        </table>
+      </section>
+
+      <section data-tab-panel="api" hidden>
+        <p class="muted" style="margin-bottom:12px;">Send a request to your local Ollama server.</p>
+        <pre class="code-block">curl http://localhost:11434/api/generate -d '{
+  "model": "gpt-oss:120b",
+  "prompt": "Why is the sky blue?",
+  "stream": false
+}'<button class="code-copy" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></pre>
+      </section>
+
+      <section data-tab-panel="license" hidden>
+        <p class="muted">Released under the Apache 2.0 license. See the model card for details.</p>
+      </section>
+    </div>
+
+    <aside class="model-aside">
+      <div class="aside-card">
+        <h4>Cloud capacity</h4>
+        <div id="mdCapacity" style="display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span class="status-badge"><span class="status-dot"></span><span class="status-label">Available</span></span>
+            <span class="muted tabular" id="mdLoadPct">—</span>
+          </div>
+          <div class="bar"><div class="bar-fill" id="mdLoadBar" style="width:0%"></div></div>
+          <p class="muted" style="font-size:12px;" id="mdLoadHint">Live load · refreshing</p>
+        </div>
+      </div>
+
+      <div class="aside-card">
+        <h4>Details</h4>
+        <dl id="mdDetails">
+          <dt>Parameters</dt><dd>120B</dd>
+          <dt>Context</dt><dd>128K</dd>
+          <dt>Family</dt><dd>gpt-oss</dd>
+          <dt>License</dt><dd>Apache 2.0</dd>
+          <dt>Size</dt><dd>65 GB</dd>
+        </dl>
+      </div>
+
+      <div class="aside-card">
+        <h4>Stats</h4>
+        <dl>
+          <dt>Pulls</dt><dd>2.4M</dd>
+          <dt>Updated</dt><dd>3 days ago</dd>
+          <dt>Downloads (7d)</dt><dd>184K</dd>
+        </dl>
+      </div>
+    </aside>
+  </main>
+
+  <div data-shell="footer"></div>
+  <div data-shell="palette"></div>
+  <script src="app.js" defer></script>
+</body>
+</html>
