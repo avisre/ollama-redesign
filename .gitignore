@@ -15,3 +15,8 @@ Thumbs.db
 
 # Claude Code
 .claude/
+
+# Logo source images (vectorized into logo.svg)
+ChatGPT Image *.png
+*.psd
+*.ai
